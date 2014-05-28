@@ -42,7 +42,7 @@ app.filter('radiofilter', function () {
 		var result = [];
 		angular.forEach(items, function (value, idx) {
 			var isSubstring = (value.name.toLowerCase().indexOf(scope.search.toLowerCase()) > -1);
-			if (value === scope.selected || isSubstring) {
+			if (value === scope.getSelected() || isSubstring) {
 				result.push(value);
 			}
 		});
