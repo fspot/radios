@@ -1,0 +1,66 @@
+<div id="main" ng-controller="RadioCtrl">
+
+	<!-- HEADER -->
+	<div class="header" ng-show="getSelected()">
+		<div class="pure-g">
+			<div class="pure-u-16-24">
+				<h1>{{ getSelected().name }} <i class="fa fa-music"></i></h1>
+			</div>
+			<div class="pure-u-8-24" style="text-align: right;">
+				<a class="pure-button pure-button-primary grey" href="#/alarm">
+					<i class="fa fa-calendar"></i> Alarmes
+				</a>
+			</div>
+		</div>
+		<p>
+			<button class="pure-button" ng-class="{green: !getSelected().isPlaying}"
+					ng-click="togglePause(getSelected())">
+				<i class="fa fa-{{ getSelected().isPlaying && 'pause' || 'play' }}"></i>
+				{{ getSelected().isPlaying && 'Pause' || 'Play' }}
+			</button>
+			<button class="pure-button" ng-class="{red: volume.off}" ng-click="toggleVolume()">
+				<i class="fa fa-volume-off" ng-show="volume.off"></i>
+				<i class="fa fa-volume-down" ng-show="volume.down"></i>
+				<i class="fa fa-volume-up" ng-show="volume.up"></i>
+			</button>
+			<button class="pure-button red" ng-click="deleteRadio(getSelected())">
+				<i class="fa fa-trash-o"></i>
+			</button>
+			<button class="pure-button green" ng-show="getNotification()" ng-click="dismissNotification()">
+				<i class="fa fa-bell-o"></i> Alarme déclenchée !
+			</button>
+		</p>
+	</div>
+
+	<div class="header" ng-hide="getSelected()">
+		<div class="pure-g">
+			<div class="pure-u-16-24">
+				<h1><i class="fa fa-hand-o-down"></i> Choisissez une radio</h1>
+			</div>
+			<div class="pure-u-8-24" style="text-align: right;">
+				<a class="pure-button pure-button-primary grey" href="#/alarm">
+					<i class="fa fa-calendar"></i> Alarmes
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- FORM -->
+	<form class="pure-form searchform">
+		<input id="search" class="pure-input-2-3" type="text" placeholder="Filtrer par nom…"
+			   ng-model="search" autocomplete="off">
+	</form>
+
+	<!-- RADIOS -->
+	<span class="radiobtn" ng-repeat="radio in radios | radiofilter:this">
+		<button class="pure-button pure-button-primary"
+				ng-class="{orange: radio.isPlaying || getSelected() === radio}" ng-click="toggle(radio)">
+				{{ radio.name }}
+		</button>
+	</span>
+	<span class="radiobtn">
+		<a class="pure-button pure-button-primary addradiobtn grey" href="#/addradio">
+			<i class="fa fa-plus"></i>
+		</a>
+	</span>
+</div>

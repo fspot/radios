@@ -1,0 +1,32 @@
+<div id="main" ng-controller="AlarmCtrl">
+
+	<!-- HEADER -->
+	<div class="header" ng-hide="selected">
+		<div class="pure-g">
+			<div class="pure-u-16-24">
+				<h1><i class="fa fa-calendar"></i> Alarmes</h1>
+			</div>
+			<div class="pure-u-8-24" style="text-align: right;">
+				<a class="pure-button pure-button-primary grey" href="#/">
+					<i class="fa fa-music"></i> Radios
+				</a>
+			</div>
+		</div>
+		<form class="pure-form alarm-form" ng-submit="newAlarm()">
+			<input type="text" size="12" ng-model="alarmWhen" placeholder="Heure (hh:mm)" required>
+			<input type="text" size="12" ng-model="alarmDuration" placeholder="Durée (minutes)" required>
+			<select ng-model="radioChoice" ng-options="radio.name for radio in radios"></select>
+			<button type="submit" class="pure-button pure-button-primary">
+				<i class="fa fa-plus"></i> Ajouter une alarme
+			</button>
+		</form>
+	</div>
+
+	<!-- ALARMES -->
+	<div ng-repeat="alarm in alarms | orderBy:'order'">
+		<button class="pure-button alarm-btn" ng-click="delAlarm(alarm)"
+				ng-class="{'pure-button-primary': !alarm.ringing, 'green': alarm.ringing}" >
+			<i class="fa fa-trash-o"></i> {{ alarm.radio.name }} à <b>{{ alarm.when }}</b> ({{ alarm.duration }} minutes)
+		</button>
+	</div>
+</div>

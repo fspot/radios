@@ -1,0 +1,27 @@
+<div id="main" ng-controller="AddRadioCtrl">
+
+	<!-- HEADER -->
+	<div class="header" ng-hide="selected">
+		<div class="pure-g">
+			<div class="pure-u-16-24">
+				<h1><i class="fa fa-plus"></i> Ajouter une radio</h1>
+			</div>
+			<div class="pure-u-8-24" style="text-align: right;">
+				<a class="pure-button pure-button-primary grey" href="#/">
+					<i class="fa fa-music"></i> Radios
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- FORM -->
+	<form class="pure-form" ng-submit="newRadio()">
+		<fieldset class="pure-group">
+			<input type="text" ng-model="radioName" class="pure-input-1" placeholder="Nom qui sera affiché" required>
+			<input type="url" ng-model="radioUrl" class="pure-input-1" placeholder="URL du flux (.mp3 / .ogg)" required>
+		</fieldset>
+		<button type="submit" class="pure-button pure-input-1 pure-button-primary">
+			<i class="fa fa-plus"></i> Ajouter
+		</button>
+	</form>
+</div>

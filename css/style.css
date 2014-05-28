@@ -1,0 +1,48 @@
+* { box-sizing: border-box; }
+.centered { text-align: center; }
+
+body {
+	color: #586E75;
+	font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
+	text-shadow: 1px 1px 5px white;
+}
+
+#main {
+	margin: 0 auto;
+	max-width: 1050px;
+	margin-bottom: 50px;
+	font-size: 1.5em;
+}
+
+.radiobtn {
+	margin: 5px;
+	display: inline-block;
+}
+
+.orange { background: rgb(248, 190, 52) !important; color: #3D3D3D; }
+.green  { background: rgb(28, 184, 65) !important; color: white; }
+.red    { background: rgb(202, 60, 60) !important; color: white; }
+.black  { background: rgb(67, 81, 86) !important; color: white; }
+a.grey {
+	background: rgb(113, 143, 153) !important;
+	color: white;
+	text-shadow: none;
+}
+a.grey:hover { background: rgb(67, 81, 86) !important; }
+
+.header {
+	border-bottom: #D2D2D2 solid 1px;
+	margin-bottom: 20px;
+}
+
+.searchform { text-align: center; }
+#search { margin: 5px; }
+
+form {
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.alarm-form  { font-size: 0.8em; }
+.alarm-btn   { display: inline-block; margin: 5px;}
+.addradiobtn { text-shadow: none; }
