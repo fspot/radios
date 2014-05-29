@@ -2,7 +2,10 @@ app.controller('RadioCtrl', function($scope, $interval, Radio) {
 	$scope.getSelected = function() { return Radio.selected; };
 	$scope.getNotification = function() { return Radio.notification; };
 	$scope.dismissNotification = function() { Radio.delNotifyAlarm(); };
-	$scope.deleteRadio = function(radio) { Radio.deleteRadio(radio); };
+	$scope.deleteRadio = function(radio) {
+		if (confirm("Êtes-vous sûr de vouloir supprimer cette radio ?"))
+			Radio.deleteRadio(radio);
+	};
 	$scope.currentTime = function() { return Radio.audioElement.currentTime; };
 	$scope.realCurrentTime = function() { return Radio.realCurrentTime(); };
 	$scope.increaseCurrentTime = function() { Radio.increaseCurrentTime(); };
