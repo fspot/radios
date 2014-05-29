@@ -1,8 +1,12 @@
-app.controller('RadioCtrl', function($scope, Radio) {
+app.controller('RadioCtrl', function($scope, $interval, Radio) {
 	$scope.getSelected = function() { return Radio.selected; };
 	$scope.getNotification = function() { return Radio.notification; };
 	$scope.dismissNotification = function() { Radio.delNotifyAlarm(); };
 	$scope.deleteRadio = function(radio) { Radio.deleteRadio(radio); };
+	$scope.currentTime = function() { return Radio.audioElement.currentTime; };
+	$scope.realCurrentTime = function() { return Radio.realCurrentTime(); };
+	$scope.increaseCurrentTime = function() { Radio.increaseCurrentTime(); };
+	$scope.decreaseCurrentTime = function() { Radio.decreaseCurrentTime(); };
 
 	$scope.toggle = function(radio) {
 		$scope.dismissNotification();
@@ -32,9 +36,30 @@ app.controller('RadioCtrl', function($scope, Radio) {
 		Radio.setVolume($scope.volume);
 	};
 
+	$scope.humanizeSeconds = function(seconds) {
+		var hours = Math.floor(seconds / 3600);
+		var minutes = Math.floor((seconds - 3600 * hours) / 60);
+		seconds = Math.floor(seconds - 3600 * hours - 60 * minutes);
+		var minsAndSecs = ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+		if (hours === 0)
+			return minsAndSecs;
+		else
+			return '' + hours + ':' + minsAndSecs;
+	};
+
+	$scope.playPauseButtonContent = function() {
+		if ($scope.timeTravel) return $scope.humanizeSeconds($scope.currentTime());
+		else if ($scope.getSelected() && $scope.getSelected().isPlaying) return "Pause";
+		else return "Play";
+	};
+
 	$scope.search = "";
 	$scope.radios = Radio.allRadios;
 	$scope.volume = Radio.volume;
+	$scope.timeTravel = false;
+
+	if (! $scope.interval) $scope.interval = $interval(function() {}, 1000);
+	$scope.$on('$destroy', function() { $interval.cancel($scope.interval); });
 });
 
 app.filter('radiofilter', function () {

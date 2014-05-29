@@ -30,6 +30,7 @@ app.service('Radio', function($sce, localStorageService, defaultRadios) {
 		this.selected = radio;
 		this.selected.isPlaying = true;
 		this.audioElement.setAttribute("src", $sce.trustAsResourceUrl(radio.url));
+		this.audioElement.beginTime = +(new Date()) / 1000;
 		this.audioElement.load();
 		this.audioElement.play();
 	};
@@ -62,11 +63,36 @@ app.service('Radio', function($sce, localStorageService, defaultRadios) {
 		return this.notification;
 	};
 
-	this.allRadios = defaultRadios;
+	this.realCurrentTime = function() {
+		return (+(new Date())) / 1000 - this.audioElement.beginTime;
+	};
+
+	this.decreaseCurrentTime = function() {
+		this.audioElement.currentTime = Math.max(0, this.audioElement.currentTime - 10);
+	};
+
+	this.increaseCurrentTime = function() {
+		this.audioElement.currentTime = Math.min(
+			this.realCurrentTime() - 5,
+			this.audioElement.currentTime + 10
+		);
+	};
+
+	this.allRadios = [];
 	var radiosBackup = localStorageService.get('allradios');
-	if (radiosBackup) this.allRadios = radiosBackup;
+	if (radiosBackup) {
+		localStorageService.set('allradios', []);
+		var that = this;
+		angular.forEach(radiosBackup, function (radio, idx) {
+			that.addRadio(radio.name, radio.url);
+		});
+	} else {
+		this.allRadios = defaultRadios;
+	}
 	this.audioElement = document.createElement("audio");
 	this.audioElement.preload = 'none';
+
+	window.audioelem = this.audioElement;
 
 	this.selected = null;
 	this.search = "";

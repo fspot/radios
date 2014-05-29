@@ -13,10 +13,22 @@
 			</div>
 		</div>
 		<p>
+			<button class="pure-button" ng-click="timeTravel = !timeTravel"
+					ng-class="{red: timeTravel}">
+				<i class="fa fa-clock-o"></i>
+			</button>
+			<button class="pure-button" ng-show="timeTravel && currentTime() > 5"
+			        ng-click="decreaseCurrentTime()">
+				<i class="fa fa-step-backward"></i>
+			</button>
+			<button class="pure-button" ng-show="timeTravel && currentTime() + 10 < realCurrentTime()"
+			        ng-click="increaseCurrentTime()">
+				<i class="fa fa-step-forward"></i>
+			</button>
 			<button class="pure-button" ng-class="{green: !getSelected().isPlaying}"
 					ng-click="togglePause(getSelected())">
 				<i class="fa fa-{{ getSelected().isPlaying && 'pause' || 'play' }}"></i>
-				{{ getSelected().isPlaying && 'Pause' || 'Play' }}
+				{{ playPauseButtonContent() }}
 			</button>
 			<button class="pure-button" ng-class="{red: volume.off}" ng-click="toggleVolume()">
 				<i class="fa fa-volume-off" ng-show="volume.off"></i>
