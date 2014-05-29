@@ -14,9 +14,10 @@ app.controller('AlarmCtrl', function($scope, $interval, Alarm, Radio) {
 		var minutes = Math.round(seconds / 60);
 		var hours = Math.floor(seconds / 3600);
 		if (hours === 0)
-			return minutes + ' minutes';
+			if (minutes > 0) return 'dans ' + minutes + ' minutes';
+			else return 'en cours';
 		else
-			return hours + 'h' + ('0' + (minutes - 60 * hours)).slice(-2);
+			return 'dans ' + hours + 'h' + ('0' + (minutes - 60 * hours)).slice(-2);
 	};
 
 	$scope.radios = Radio.allRadios;
