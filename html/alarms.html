@@ -26,7 +26,7 @@
 	<div ng-repeat="alarm in alarms | orderBy:'order'">
 		<button class="pure-button alarm-btn" ng-click="delAlarm(alarm)"
 				ng-class="{'pure-button-primary': !alarm.ringing, 'green': alarm.ringing}" >
-			<i class="fa fa-trash-o"></i> {{ alarm.radio.name }} à <b>{{ alarm.when }}</b> ({{ alarm.duration }} minutes)
+			<i class="fa fa-trash-o"></i> À <b>{{ alarm.when }}</b> (dans {{ humanizeWhen(alarm.when) }}) : {{ alarm.radio.name }} ({{ alarm.duration }} minutes)
 		</button>
 	</div>
 </div>

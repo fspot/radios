@@ -24,28 +24,35 @@ app.service('Alarm', function($timeout, Radio, localStorageService) {
 		this.cancelAlarm(alarm);
 	};
 
+	var fixWhenString = function(when) {
+		if (when.indexOf(':') > -1)       when = when.split(':');
+		else if (when.indexOf('h') > -1)  when = when.split('h');
+		else                              when = [when, '0'];
+		return when[0] + ':' + ('00' + when[1]).slice(-2);
+	};
+
 	var parseDate = function(when) {
 		when = when.split(':');
 		return 3600 * (+when[0]) + 60 * (+when[1]);
 	};
 
-	var whenInSeconds = function(when) {
+	this.whenInSeconds = function(when) {
 		var now = new Date();
 		var nowInSeconds = 3600 * now.getHours() + 60 * now.getMinutes() + now.getSeconds();
-		var whenInSeconds = parseDate(when);
-		var diff = whenInSeconds - nowInSeconds;
-		var oneDayInSeconds = 1000 * 24 * 3600;
+		var whenInSecs = parseDate(when);
+		var diff = whenInSecs - nowInSeconds;
+		var oneDayInSeconds = 24 * 3600;
 		if (diff < 0 && diff > -5 * 60) return 0;
-		else if (diff < 0) return (oneDayInSeconds - nowInSeconds) + whenInSeconds;
+		else if (diff < 0) return (oneDayInSeconds - nowInSeconds) + whenInSecs;
 		else return diff;
 	};
 
 	this.addAlarm = function(when, duration, radio) {
-		var whenString = when;
-		when = whenInSeconds(when);
-		var alarm = {when: whenString, order: when, duration: +duration, radio: radio, ringing: false};
+		var when = fixWhenString(when);
+		var whenInSecs = this.whenInSeconds(when);
+		var alarm = {when: when, order: whenInSecs, duration: +duration, radio: radio, ringing: false};
 		var that = this;
-		alarm.timeout = $timeout((function() { that.ring(alarm); }), when * 1000);
+		alarm.timeout = $timeout((function() { that.ring(alarm); }), whenInSecs * 1000);
 		this.alarms.push(alarm);
 		this.backupNow();
 	};

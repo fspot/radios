@@ -4,7 +4,7 @@
 	<div class="header" ng-show="getSelected()">
 		<div class="pure-g">
 			<div class="pure-u-16-24">
-				<h1>{{ getSelected().name }} <i class="fa fa-music"></i></h1>
+				<h1>{{ getSelected().name }} <i class="fa fa-music" ng-show="getSelected().isPlaying"></i></h1>
 			</div>
 			<div class="pure-u-8-24" style="text-align: right;">
 				<a class="pure-button pure-button-primary grey" href="#/alarm">
