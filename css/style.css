@@ -4,7 +4,6 @@
 body {
 	color: #586E75;
 	font-family: FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;
-	text-shadow: 1px 1px 5px white;
 }
 
 #main {
@@ -26,7 +25,6 @@ body {
 a.grey {
 	background: rgb(113, 143, 153) !important;
 	color: white;
-	text-shadow: none;
 }
 a.grey:hover { background: rgb(67, 81, 86) !important; }
 
@@ -45,4 +43,3 @@ form {
 
 .alarm-form  { font-size: 0.8em; }
 .alarm-btn   { display: inline-block; margin: 5px;}
-.addradiobtn { text-shadow: none; }

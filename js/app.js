@@ -11,7 +11,10 @@ app.value("defaultRadios", [
 	{url: "http://adwzg3.tdf-cdn.com/8470/nrj_165631.mp3", name: "NRJ", isPlaying: false},
 	{url: "http://95.81.146.2/collinesfm/all/collines.mp3", name: "Collines", isPlaying: false},
 	{url: "http://diffusion.lafrap.fr/alternantes.mp3", name: "Alternantes", isPlaying: false},
-	{url: "http://vipicecast.yacast.net/virginradio_192", name: "Virgin Radio", isPlaying: false}
+	{url: "http://vipicecast.yacast.net/virginradio_192", name: "Virgin Radio", isPlaying: false},
+	{url: "http://live.francra.org:8000/radiocanut", name: "Radio Canut", isPlaying: false},
+	{url: "http://ecoutez.radio-libertaire.org:8080/radiolib", name: "Radio Libertaire", isPlaying: false},
+	{url: "http://radio.toile-libre.org:8000/fpp.mp3", name: "FPP", isPlaying: false}
 ]);
 
 app.config(function($routeProvider) {

@@ -1,4 +1,4 @@
-app.controller('RadioCtrl', function($scope, $interval, Radio) {
+app.controller('RadioCtrl', function($scope, $interval, Radio, Alarm) {
 	$scope.getSelected = function() { return Radio.selected; };
 	$scope.getNotification = function() { return Radio.notification; };
 	$scope.dismissNotification = function() { Radio.delNotifyAlarm(); };
@@ -10,6 +10,7 @@ app.controller('RadioCtrl', function($scope, $interval, Radio) {
 	$scope.realCurrentTime = function() { return Radio.realCurrentTime(); };
 	$scope.increaseCurrentTime = function() { Radio.increaseCurrentTime(); };
 	$scope.decreaseCurrentTime = function() { Radio.decreaseCurrentTime(); };
+	$scope.nbAlarmsPending = function() { return Alarm.alarms.length; };
 
 	$scope.toggle = function(radio) {
 		$scope.dismissNotification();

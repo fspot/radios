@@ -1,18 +1,25 @@
 <div id="main" ng-controller="RadioCtrl">
 
 	<!-- HEADER -->
-	<div class="header" ng-show="getSelected()">
+	<div class="header">
+
 		<div class="pure-g">
-			<div class="pure-u-16-24">
+			<div class="pure-u-16-24" ng-show="getSelected()">
 				<h1>{{ getSelected().name }} <i class="fa fa-music" ng-show="getSelected().isPlaying"></i></h1>
 			</div>
+			<div class="pure-u-16-24" ng-hide="getSelected()">
+				<h1><i class="fa fa-hand-o-down"></i> Choisissez une radio</h1>
+			</div>
 			<div class="pure-u-8-24" style="text-align: right;">
-				<a class="pure-button pure-button-primary grey" href="#/alarm">
-					<i class="fa fa-calendar"></i> Alarmes
+				<a class="pure-button pure-button-primary" href="#/alarm"
+				   ng-class="{red: nbAlarmsPending(), grey: !nbAlarmsPending()}">
+					<i class="fa fa-calendar"></i>
+					Alarmes {{ nbAlarmsPending() && '(' + nbAlarmsPending() +')' || '' }}
 				</a>
 			</div>
 		</div>
-		<p>
+
+		<p ng-show="getSelected()">
 			<button class="pure-button" ng-click="timeTravel = !timeTravel"
 					ng-class="{red: timeTravel}">
 				<i class="fa fa-clock-o"></i>
@@ -42,19 +49,6 @@
 				<i class="fa fa-bell-o"></i> Alarme déclenchée !
 			</button>
 		</p>
-	</div>
-
-	<div class="header" ng-hide="getSelected()">
-		<div class="pure-g">
-			<div class="pure-u-16-24">
-				<h1><i class="fa fa-hand-o-down"></i> Choisissez une radio</h1>
-			</div>
-			<div class="pure-u-8-24" style="text-align: right;">
-				<a class="pure-button pure-button-primary grey" href="#/alarm">
-					<i class="fa fa-calendar"></i> Alarmes
-				</a>
-			</div>
-		</div>
 	</div>
 
 	<!-- FORM -->
