@@ -14,7 +14,10 @@ app.value("defaultRadios", [
 	{url: "http://vipicecast.yacast.net/virginradio_192", name: "Virgin Radio", isPlaying: false},
 	{url: "http://live.francra.org:8000/radiocanut", name: "Radio Canut", isPlaying: false},
 	{url: "http://ecoutez.radio-libertaire.org:8080/radiolib", name: "Radio Libertaire", isPlaying: false},
-	{url: "http://radio.toile-libre.org:8000/fpp.mp3", name: "FPP", isPlaying: false}
+	{url: "http://radio.toile-libre.org:8000/fpp.mp3", name: "FPP", isPlaying: false},
+	{url: "http://swingfm.ice.infomaniak.ch:80/swingfm-128", name: "Swing FM", isPlaying: false},
+	{url: "http://broadcast.infomaniak.net/radionova-high.mp3", name: "Nova", isPlaying: false},
+	{url: "http://radio.rim952.fr:8000/stream.mp3", name: "Ici et Maintenant", isPlaying: false}
 ]);
 
 app.config(function($routeProvider) {
