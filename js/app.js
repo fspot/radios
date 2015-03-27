@@ -19,7 +19,7 @@ app.value("defaultRadios", [
 	{url: "http://broadcast.infomaniak.net/radionova-high.mp3", name: "Nova", isPlaying: false},
 	{url: "http://radio.rim952.fr:8000/stream.mp3", name: "Ici et Maintenant", isPlaying: false},
 	{url: "http://91.121.65.189:8000/2", name: "Radio Zinzine", isPlaying: false},
-	{url: "http://s8.voscast.com:7742/;stream1427453898011/1", name: "Vosstanie", isPlaying: false},
+	{url: "http://s8.voscast.com:7742/;stream1427453898011/1", name: "Vosstanie", isPlaying: false}
 ]);
 
 app.config(function($routeProvider) {
