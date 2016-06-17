@@ -13,7 +13,7 @@ app.value("defaultRadios", [
 	{url: "http://mp3lg4.tdf-cdn.com/9243/lag_164753.mp3", name: "Virgin", isPlaying: false},
 	{url: "http://diffusion.lafrap.fr/alternantes.mp3", name: "Alternantes", isPlaying: false},
 	{url: "http://ledjamradio.ice.infomaniak.ch/ledjamradio.mp3", name: "Ledjam Radio", isPlaying: false},
-	{url: "http://213.186.61.62:8400/;stream.nsv", name: "Radio Béton", isPlaying: false},
+	{url: "http://51.254.220.198:8000/stream.mp3", name: "Radio Béton", isPlaying: false},
 	{url: "http://www.hosting-serv.com:9160/;", name: "Radio Dio", isPlaying: false},
 	{url: "http://stream.franclr.fr:8000/radioescapades", name: "Radio Escapades", isPlaying: false},
 	{url: "http://canalsud.scdn.arkena.com/canalsud.mp3", name: "Canal Sud", isPlaying: false},
