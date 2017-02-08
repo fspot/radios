@@ -27,7 +27,7 @@ app.value("defaultRadios", [
 	{url: "http://91.121.65.189:8000/3", name: "Radio Zinzine", isPlaying: false},
 	{url: "http://broadcast.infomaniak.net/radionova-high.mp3", name: "Nova", isPlaying: false},
 	{url: "http://www.radiogalere.org:8080/galere.mp3", name: "Radio Galère", isPlaying: false},
-	{url: "http://s8.voscast.com:7742/;stream1427453898011/1", name: "Vosstanie", isPlaying: false}
+	{url: "http://s8.voscast.com:7742/;stream1427453898011/1", name: "Vosstanie", isPlaying: false},
 	{url: "http://stream.radiolarzac.org:8000/radiolarzac", name: "Radio Larzac", isPlaying: false}
 ]);
 
