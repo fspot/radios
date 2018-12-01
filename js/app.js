@@ -29,7 +29,9 @@ app.value("defaultRadios", [
 	{url: "http://broadcast.infomaniak.net/radionova-high.mp3", name: "Nova", isPlaying: false},
 	{url: "http://www.radiogalere.org:8080/galere.mp3", name: "Radio Galère", isPlaying: false},
 	{url: "http://s8.voscast.com:7742/;stream1427453898011/1", name: "Vosstanie", isPlaying: false},
-	{url: "http://stream.radiolarzac.org:8000/radiolarzac", name: "Radio Larzac", isPlaying: false}
+	{url: "http://stream.radiolarzac.org:8000/radiolarzac", name: "Radio Larzac", isPlaying: false},
+	{url: "http://icepe8.infomaniak.ch/radiovassiviere-128.aac", name: "Radio Vassivière", isPlaying: false},
+	{url: "http://radiopaysdegueret.ice.infomaniak.ch/radiopaysdegueret.mp3", name: "RPG", isPlaying: false}
 ]);
 
 app.config(function($routeProvider) {
